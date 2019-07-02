@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Movie;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function welcome() {
-        return view('welcome')->withMovies([
-            'Avengers: Endgame',
-            'Star Wars',
-            'Lord of the Rings'
-        ]);
+        $movies = Movie::all();
+        return view('welcome')->withMovies($movies);
     }
 }

@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'PageController@welcome');
+
+
+Route::resource('movies','MovieController');

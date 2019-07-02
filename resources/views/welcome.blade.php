@@ -6,7 +6,7 @@
     <div class="links">
         <ul>
             @foreach($movies as $movie)
-                <li>{{ $movie }}</li>
+                <li>{{ $movie->title }}</li>
             @endforeach
         </ul>
     </div>
