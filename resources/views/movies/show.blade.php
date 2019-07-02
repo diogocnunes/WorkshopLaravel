@@ -5,12 +5,15 @@
 @section('content')
     <div class="links">
         <ul>
-            <li>
-               {{$movie->description}}
-            </li>
-            <li>
-               {{$movie->release_date}}
-            </li>
+            <li>Título: {{ $movie->title }}</li>
+            <li>Descrição: {{ $movie->description }}</li>
+            <li>Ano: {{ $movie->release_date }}</li>
         </ul>
+        <div>
+            <a href="/movies/{{ $movie->id }}/edit">Edit</a>
+        </div>
+        <div>
+            <a href="/movies/">Movies List</a>
+        </div>
     </div>
 @endsection

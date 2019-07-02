@@ -11,4 +11,13 @@ Repositório para o Workshop Laravel
 * Controlador
 
 ## Aula 3
-...
+* Migrações
+* Eloquent
+* Namespace
+* MVC
+* Formulário CRUD
+* Resources
+
+## Aula 4
+* Review das primeiras aulas
+* Edição e Exclusão de Dados do Formulário

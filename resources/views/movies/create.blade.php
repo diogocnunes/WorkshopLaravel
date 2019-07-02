@@ -3,19 +3,27 @@
 @section('title', 'Create Movie')
 
 @section('content')
-    <div class="links">
-        <form method="POST" action="/movies">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label>Title</label> <input class="form-control" type="text" name="title"/>
-            </div>
-            <div class="form-group">
-                <label>Description</label> <input class="form-control" type="text" name="description"/>
-            </div>
-            <div class="form-group">
-                <label>Release Date</label> <input class="form-control" type="text" name="release_date"/>
-            </div>
-            <input type="submit"></input>
-        </form>
+    <form method="POST" action="/movies">
+
+        @csrf
+
+        <div>
+            <input type="text" name="title" placeholder="Título do Filme"/>
+        </div>
+
+        <div>
+            <textarea name="description" placeholder="Descrição do Filme"></textarea>
+        </div>
+
+        <div>
+            <input type="text" name="release_date" placeholder="Ano do Filme"/>
+        </div>
+
+        <div>
+            <button type="submit">Create Movie</button>
+        </div>
+    </form>
+    <div>
+        <a href="/movies/">Movies List</a>
     </div>
 @endsection
