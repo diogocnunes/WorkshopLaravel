@@ -6,8 +6,11 @@
     <div class="links">
         <ul>
             @foreach($movies as $movie)
-                <li>{{ $movie->title }}</li>
+                <li><a href="/movies/{{ $movie->id }}">{{ $movie->title }}</a></li>
             @endforeach
         </ul>
+        <div>
+            <a href="/movies/create">New Movie</a>
+        </div>
     </div>
 @endsection

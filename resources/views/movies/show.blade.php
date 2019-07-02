@@ -9,5 +9,11 @@
             <li>Descrição: {{ $movie->description }}</li>
             <li>Ano: {{ $movie->year }}</li>
         </ul>
+        <div>
+            <a href="/movies/{{ $movie->id }}/edit">Edit</a>
+        </div>
+        <div>
+            <a href="/movies/">Movies List</a>
+        </div>
     </div>
 @endsection

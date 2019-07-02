@@ -64,7 +64,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('movies.edit', compact('movie'));
     }
 
     /**
@@ -76,17 +76,25 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $movie->title = $request->input('title');
+        $movie->description = $request->input('description');
+        $movie->year = $request->input('year');
+        $movie->save();
+
+        return redirect('/movies/'.$movie->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param \App\Movie $movie
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+
+        return redirect('/movies');
     }
 }

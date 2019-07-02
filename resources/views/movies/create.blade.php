@@ -23,4 +23,7 @@
             <button type="submit">Create Movie</button>
         </div>
     </form>
+    <div>
+        <a href="/movies/">Movies List</a>
+    </div>
 @endsection
