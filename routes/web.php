@@ -11,4 +11,7 @@
 |
 */
 
+Route::get('/', function() {
+    return view('index');
+});
 Route::resource('movies', 'MovieController');

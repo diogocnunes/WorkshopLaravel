@@ -41,7 +41,7 @@ class MovieController extends Controller
             'description' => ['required','min:10']
         ]);
 
-        Movie::create($request->only(['title', 'description']));
+        Movie::create($request->all());
 
         return redirect('/movies');
     }
