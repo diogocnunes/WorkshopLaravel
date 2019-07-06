@@ -105,23 +105,23 @@
     margin-top: 5px;
     margin-left: 1px;
 }
-.card-img {
+.card-movie-img {
     -webkit-clip-path: inset(10% 0 20% 0);
     clip-path: inset(10% 0 20% 0);
     margin-top: -15%;
 }
 
-.card-body {
+.card-movie-body {
     position: relative;
     margin-top: -30%;
     color: #9FA7A9;
 }
-.card-body .card-title {
+.card-movie-body .card-movie-title {
     font-weight: 400;
     color: #414345;
     font-size: 30pt;
 }
-.card-body .card-text {
+.card-movie-body .card-movie-text {
     margin-top: 8px;
     font-weight: 600;
     line-height: 30px;
