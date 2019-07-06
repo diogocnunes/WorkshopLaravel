@@ -4,7 +4,7 @@
 
 @section('content')
     <a href="/movies/create"><button class="btn btn-danger btn-round"><i class="material-icons">add_circle_outline</i> adicionar filme</button></a>
-    <div class="mt-5">
+    <div class="mt-5 row">
 
 
     @foreach($movies as $movie)
@@ -22,7 +22,8 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <p>xx/10</p>
                         </div>
-                        <div class="col-8 metadata">{{ $movie->year }}</div>
+                        <div class="col-4 metadata">{{ $movie->year }}</div>
+                        <div class="col-4 metadata">{{ $movie->genre->name }}</div>
                     </div>
                 </div>
                 <p class="card-text">{{ $movie->description }}</p>
