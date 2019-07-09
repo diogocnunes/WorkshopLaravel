@@ -11,7 +11,17 @@
 |
 */
 
+use App\Genre;
+
 Route::get('/', function() {
     return view('index');
 });
 Route::resource('movies', 'MovieController');
+Route::resource('genres', 'GenreController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+View::share(
+    'menu', Genre::all()
+);

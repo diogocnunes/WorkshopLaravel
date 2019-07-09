@@ -15,18 +15,6 @@
 
 </head>
 <body>
-<!--
-<div>
-    <div class="content">
-        <div class="title m-b-md">
-            @yield('title')
-        </div>
-
-        @yield('content')
-
-    </div>
-</div>
--->
 
 <div class="wrapper ">
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="{{ asset('img/avengers.jpg   ') }}">
@@ -37,17 +25,27 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="nav-item active  ">
+                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="/">
                         <i class="material-icons">home</i>
                         <p>Home</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item {{ Request::is('movies*') ? 'active' : '' }}">
                     <a class="nav-link" href="/movies">
                         <i class="material-icons">movies</i>
-                        <p>Movies</p>
+                        <p>Filmes</p>
                     </a>
+                </li>
+                <li class="nav-item {{ Request::is('genre*') ? 'active' : '' }}">
+                    <a class="nav-link">
+                        <i class="material-icons">local_offer</i>
+                        <p>Gênero</p>
+                    </a>
+                    <ul class="list-group">
+                        {{ $menu }}
+                        <a href="" class="nav-link m-0 py-0"><li class="list-group-item border-bottom">Romântico</li></a>
+                    </ul>
                 </li>
             </ul>
         </div>
