@@ -14,8 +14,12 @@
 Route::get('/', function() {
     return view('index');
 });
-Route::resource('movies', 'MovieController');
-Route::resource('genres', 'GenreController');
+
+//route::group(['middleware' => 'auth'], function() {
+    Route::resource('movies', 'MovieController');
+    Route::resource('genres', 'GenreController');
+//});
+
 Route::get('/genres/{genre}/movies', 'GenreController@movieByGenre');
 
 Auth::routes();
