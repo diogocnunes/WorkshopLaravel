@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
+
     protected $guarded = [];
 
-    public function getMenu() {
-
-        $genres = App\Genre::all();
-        return $genres;
-
+    public function movies() {
+        return $this->hasMany(Movie::class);
     }
 }
+

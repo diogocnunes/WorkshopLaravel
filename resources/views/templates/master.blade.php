@@ -38,13 +38,17 @@
                     </a>
                 </li>
                 <li class="nav-item {{ Request::is('genre*') ? 'active' : '' }}">
-                    <a class="nav-link">
+                    <div class="d-flex flex-row justify-content-end position-absolute container z-index-1" style="z-index: 1">
+                        <a href="/genres/create" class="btn {{ !Request::is('genre*') ? 'btn-danger text-white' : 'btn-white text-danger' }} rounded-circle btn-sm my-1" role="button">+</a>
+                    </div>
+                    <a class="nav-link {{ !Request::is('genre*') ? 'bg-light' : '' }}">
                         <i class="material-icons">local_offer</i>
                         <p>Gênero</p>
                     </a>
                     <ul class="list-group">
-                        {{ $menu }}
-                        <a href="" class="nav-link m-0 py-0"><li class="list-group-item border-bottom">Romântico</li></a>
+                        @foreach($menu as $item)
+                        <a href="" class="nav-link m-0 py-0"><li class="nav-item list-group-item border-bottom py-2">{{ $item->name }}</li></a>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
