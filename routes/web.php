@@ -21,3 +21,7 @@ Route::get('/genres/{genre}/movies', 'GenreController@movieByGenre');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+View::share(
+    'menu', App\Genre::all()->sortBy('name')
+);

@@ -25,7 +25,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('genres.create');
     }
 
     /**
@@ -36,7 +36,13 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required|min:5|max:255',
+        ]);
+
+        Genre::create($request->all());
+
+        return redirect('/genres/create ');
     }
 
     /**

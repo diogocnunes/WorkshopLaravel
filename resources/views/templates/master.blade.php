@@ -15,18 +15,6 @@
 
 </head>
 <body>
-<!--
-<div>
-    <div class="content">
-        <div class="title m-b-md">
-            @yield('title')
-        </div>
-
-        @yield('content')
-
-    </div>
-</div>
--->
 
 <div class="wrapper ">
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="{{ asset('img/avengers.jpg   ') }}">
@@ -37,17 +25,31 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="nav-item active  ">
+                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="/">
                         <i class="material-icons">home</i>
                         <p>Home</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item {{ Request::is('movies*') ? 'active' : '' }}">
                     <a class="nav-link" href="/movies">
                         <i class="material-icons">movies</i>
-                        <p>Movies</p>
+                        <p>Filmes</p>
                     </a>
+                </li>
+                <li class="nav-item {{ Request::is('genre*') ? 'active' : '' }}">
+                    <div class="d-flex flex-row justify-content-end position-absolute container z-index-1" style="z-index: 1">
+                        <a href="/genres/create" class="btn {{ !Request::is('genre*') ? 'btn-danger text-white' : 'btn-white text-danger' }} rounded-circle btn-sm my-1" role="button">+</a>
+                    </div>
+                    <a class="nav-link {{ !Request::is('genre*') ? 'bg-light' : '' }}">
+                        <i class="material-icons">local_offer</i>
+                        <p>Gênero</p>
+                    </a>
+                    <ul class="list-group">
+                        @foreach($menu as $item)
+                        <a href="" class="nav-link m-0 py-0"><li class="nav-item list-group-item border-bottom py-2">{{ $item->name }}</li></a>
+                        @endforeach
+                    </ul>
                 </li>
             </ul>
         </div>
