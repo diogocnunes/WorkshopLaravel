@@ -2,24 +2,25 @@
 
 namespace App\Providers;
 
+use App\Twitter;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class SocialServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
     public function register()
     {
-//        $this->app->singleton('foo', function() {
-//            return 'bar';
-//        });
+        $this->app->singleton(Twitter::class, function() {
+            return new Twitter('api-key');
+        });
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */

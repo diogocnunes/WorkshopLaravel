@@ -11,11 +11,30 @@
 |
 */
 
-Route::get('/', function() {
+use App\Twitter;
+
+app()->singleton('example', function () {
+    return new \App\Example;
+});
+
+Route::get('/', function () {
+//Route::get('/', function(Twitter $twitter) {
+//    dd(app('example'), app('example'));
+
+//    dd(app('App\Example'));
+
+//    dd(app('foo'));
+
+//    dd($twitter);
+
     return view('index');
 });
-Route::resource('movies', 'MovieController');
-Route::resource('genres', 'GenreController');
+
+Route::group(["middleware" => "auth"], function () {
+    Route::resource('movies', 'MovieController');
+    Route::resource('genres', 'GenreController');
+});
+
 Route::get('/genres/{genre}/movies', 'GenreController@movieByGenre');
 
 Auth::routes();

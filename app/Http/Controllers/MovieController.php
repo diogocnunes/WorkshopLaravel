@@ -14,6 +14,10 @@ class MovieController extends Controller
      */
     public function index()
     {
+        auth()->id(); // ID
+        auth()->user(); // User
+        auth()->check(); // boolean
+
         $movies = Movie::with('genre')->get();
         return view('movies.index', compact('movies'));
     }
