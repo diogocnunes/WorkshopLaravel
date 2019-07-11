@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +47,10 @@ class MovieController extends Controller
             'description' => ['required','min:10']
         ]);
 
-        Movie::create($request->all());
+        $fields = $request->all();
+        $fields['user_id'] = auth()->id();
+
+        Movie::create($fields);
 
         return redirect('/movies');
     }
@@ -83,7 +92,10 @@ class MovieController extends Controller
             'description' => ['required','min:10']
         ]);
 
-        $movie->update(request(['id','title', 'description','year']));
+        $fields = request(['id','title', 'description','year']);
+        $fields['user_id'] = auth()->id();
+
+        $movie->update($fields);
 
         return redirect('/movies/'.$movie->id);
     }
