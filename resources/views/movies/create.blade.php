@@ -16,10 +16,20 @@
                 <div class="card-body">
                     <form>
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Título do filme</label>
                                     <input type="text" name="title" class="form-control" required value="{{ old('title') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Gênero</label>
+                                    <select class="form-control" name="genre_id" id="genre_id">
+                                        @foreach ($genres as $genre)
+                                        <option value="{{ $genre->id }}" @if(old('genre_id') === $genre->id) selected  @endif>{{ $genre->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -42,7 +52,7 @@
                                 <div class="form-group">
                                     <label>Descrição</label>
                                     <div class="form-group bmd-form-group">
-                                        <textarea class="form-control" name="description" rows="5" required value="{{ old('description') }}"></textarea>
+                                        <textarea class="form-control" name="description" rows="5" required>{{ old('description') }}</textarea>
                                     </div>
                                 </div>
                             </div>

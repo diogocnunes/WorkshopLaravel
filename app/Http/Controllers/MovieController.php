@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Genre;
 use App\Movie;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('movies.create');
+        $genres = Genre::all();
+        return view('movies.create', compact('genres'));
     }
 
     /**
@@ -44,7 +46,8 @@ class MovieController extends Controller
     {
         request()->validate([
             'title' => 'required|min:5|max:255',
-            'description' => ['required','min:10']
+            'description' => ['required','min:10'],
+            'genre_id' => 'required'
         ]);
 
         $fields = $request->all();
@@ -74,7 +77,8 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('movies.edit', compact('movie'));
+        $genres = Genre::all();
+        return view('movies.edit', compact('movie', 'genres'));
     }
 
     /**
@@ -89,10 +93,11 @@ class MovieController extends Controller
 
         request()->validate([
             'title' => 'required|min:5|max:255',
-            'description' => ['required','min:10']
+            'description' => ['required','min:10'],
+            'genre_id' => 'required'
         ]);
 
-        $fields = request(['id','title', 'description','year']);
+        $fields = request(['id','genre_id', 'title', 'description','year']);
         $fields['user_id'] = auth()->id();
 
         $movie->update($fields);
