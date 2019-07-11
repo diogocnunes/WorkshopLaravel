@@ -21,3 +21,16 @@ Repositório para o Workshop Laravel
 ## Aula 4
 * Review das primeiras aulas
 * Edição e Exclusão de Dados do Formulário
+
+## Aula 5
+* Blade
+
+## Aula 6
+* Relationships
+
+## Aula 7
+* Mutators
+* Accessors
+
+## Aula 8
+* 
