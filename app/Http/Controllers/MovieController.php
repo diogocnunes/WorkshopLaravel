@@ -77,18 +77,20 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
+        $this->authorize('view', $movie);
+
         $genres = Genre::all();
+
         return view('movies.edit', compact('movie', 'genres'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
+     * @param \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Movie $movie)
     {
 
         request()->validate([

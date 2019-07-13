@@ -41,4 +41,12 @@ class User extends Authenticatable
         return $this->name . ' ' . $this->surname;
     }
 
+    public function isOwns ($userId) {
+        return $userId === auth()->id();
+    }
+
+    public function isGod () {
+        return auth()->id() === 1;
+    }
+
 }
