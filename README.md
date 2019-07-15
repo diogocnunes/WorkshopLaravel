@@ -38,4 +38,10 @@ Repositório para o Workshop Laravel
 * Auth Users
 
 ## Aula 9
-...
+* Policies
+* Dependence Injection
+* Service Container
+* Auto Resolution
+* Service Providers
+* Enviroments e Configurações
+* Laravel Telescope
