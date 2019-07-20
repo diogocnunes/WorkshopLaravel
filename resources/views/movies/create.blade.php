@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Create Movie')
+@section('title', 'MovieResource')
 
 @section('content')
     <form method="POST" action="/movies">

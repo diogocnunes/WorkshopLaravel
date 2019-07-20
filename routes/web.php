@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/genres/{genre}/movies', 'GenreController@movieByGenre');
 
+Route::get('/test', 'TestController@index');
+
 Auth::routes();
 
 View::share(

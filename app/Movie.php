@@ -14,4 +14,26 @@ class Movie extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    /**
+     * Remove one year
+     *
+     * @return void
+     */
+    public function removeYear(): void
+    {
+        --$this->year;
+        $this->save();
+    }
+
+    /**
+     * Add one year
+     *
+     * @return void
+     */
+    public function addYear(): void
+    {
+        ++$this->year;
+        $this->save();
+    }
+
 }
