@@ -6,34 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+        'year',
+        'genre_id'
+    ];
 
-
-    protected $guarded = [];
-
-    public function genre() {
+    public function genre()
+    {
         return $this->belongsTo(Genre::class);
     }
-
-    /**
-     * Remove one year
-     *
-     * @return void
-     */
-    public function removeYear(): void
-    {
-        --$this->year;
-        $this->save();
-    }
-
-    /**
-     * Add one year
-     *
-     * @return void
-     */
-    public function addYear(): void
-    {
-        ++$this->year;
-        $this->save();
-    }
-
 }

@@ -1,37 +1,81 @@
-@extends('templates.master')
+@extends('adminlte::page')
 
-@section('title', 'Meus filmes')
+@section('title', 'Movies')
+
+@section('content_header')
+    <h1>Movies</h1>
+@stop
 
 @section('content')
-    <a href="/movies/create"><button class="btn btn-danger btn-round"><i class="material-icons">add_circle_outline</i> adicionar filme</button></a>
-    <div class="mt-5 row">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
 
-
-    @foreach($movies as $movie)
-    <div class="col-md-4">
-        <a href="/movies/{{ $movie->id }}">
-        <div class="card card-movie">
-            <div class="card-header">
-                <img class="card-img" src="{{ $movie->cover }}" alt="Card image">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title">{{ $movie->title }}</h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4 metadata">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <p>xx/10</p>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <a class="btn btn-primary" href="{{ route('movies.create') }}" title="Create Movie">Create</a>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
                         </div>
-                        <div class="col-4 metadata">{{ $movie->year }}</div>
-                        <div class="col-4 metadata">{{ $movie->genre->name }}</div>
                     </div>
                 </div>
-                <p class="card-text">{{ $movie->description }}</p>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Year</th>
+                                <th>Genre</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        @if(count($movies) > 0)
+                            <tbody>
+                                @foreach($movies as $movie)
+                                    <tr>
+                                        <td>{{ $movie->id }}</td>
+                                        <td>{{ $movie->title }}</td>
+                                        <td>{{ $movie->description }}</td>
+                                        <td>{{ $movie->year }}</td>
+                                        <td>{{ $movie->genre->name }}</td>
+                                        <td>
+                                            <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-sm btn-warning fa fa-edit" title="Edit Movie"></a>
+                                            <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-sm btn-info fa fa-eye" title="View Movie"></a>
+                                            <div class="btn-group">
+                                                <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-sm btn-danger fa fa-remove" title="Delete Movie"></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        @else
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="alert alert-warning">
+                                            Movies not found
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        @endif
+                    </table>
+                </div>
             </div>
         </div>
-        </a>
-    </div>
-    @endforeach
-
     </div>
 @endsection

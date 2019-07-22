@@ -11,19 +11,17 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index');
-
-//route::group(['middleware' => 'auth'], function() {
-    Route::resource('movies', 'MovieController');
-    Route::resource('genres', 'GenreController');
-//});
-
-Route::get('/genres/{genre}/movies', 'GenreController@movieByGenre');
-
-Route::get('/test', 'TestController@index');
-
 Auth::routes();
 
-View::share(
-    'menu', App\Genre::all()->sortBy('name')
-);
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('/', function () {
+        return redirect('home');
+    });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('/movies', 'MoviesController');
+    Route::resource('/genres', 'GenresController');
+    Route::get('/genres/{id}/movies', 'GenresController@movies')->name('genres.movies');
+});
