@@ -9,7 +9,11 @@ class PlaylistController extends Controller
 {
     public function index()
     {
-        return view('playlist.index');
+        $movieIds = Playlist::where('user_id', auth()->id())->pluck('movie_id');
+
+        $movies = Movie::whereIn('id', $movieIds)->get();
+
+        return view('playlist.index', compact('movies'));
     }
 
     public function store()
