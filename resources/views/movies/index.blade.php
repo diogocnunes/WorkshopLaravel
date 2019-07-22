@@ -1,37 +1,24 @@
-@extends('templates.master')
+@extends('layouts.master')
 
-@section('title', 'Meus filmes')
+@section ('title', 'All Movies')
 
-@section('content')
-    <a href="/movies/create"><button class="btn btn-danger btn-round"><i class="material-icons">add_circle_outline</i> adicionar filme</button></a>
-    <div class="mt-5 row">
+@section ('img')
+    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80" class="h-screen w-screen object-cover absolute top-0" style="z-index: -2;"></img>
+    <div class="h-screen w-screen absolute top-0 bg-black opacity-25" style="z-index: -1;"></div>
+@endsection
+    
+@section ('content')
+<div class="mt-20">
+    <h1 class="uppercase font-bold tracking-wider mx-2">Latest Movies</h1>
 
-
-    @foreach($movies as $movie)
-    <div class="col-md-4">
-        <a href="/movies/{{ $movie->id }}">
-        <div class="card card-movie">
-            <div class="card-header">
-                <img class="card-img" src="{{ $movie->cover }}" alt="Card image">
+    <div class="flex flex-wrap">
+        @foreach ($movies as $movie)
+            <div class="my-4 mx-2 rounded">
+                <a href="{{ $movie->path() }}">
+                    <img src="{{ $movie->thumbnail }}" alt="" style="width: 260px; height: 150px; object-fit: cover;" class="rounded-sm shadow">
+                </a>
             </div>
-            <div class="card-body">
-                <h1 class="card-title">{{ $movie->title }}</h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4 metadata">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <p>xx/10</p>
-                        </div>
-                        <div class="col-4 metadata">{{ $movie->year }}</div>
-                        <div class="col-4 metadata">{{ $movie->genre->name }}</div>
-                    </div>
-                </div>
-                <p class="card-text">{{ $movie->description }}</p>
-            </div>
-        </div>
-        </a>
+        @endforeach
     </div>
-    @endforeach
-
-    </div>
+</div>
 @endsection

@@ -1,67 +1,61 @@
-@extends('templates.master')
+@extends('layouts.master')
 
-@section('title', 'Create Movie')
+@section ('title', 'Create Movie')
+    
+@section ('content')
+<div class="w-3/5 mx-auto">
+    <div class="border-b-2 border-gray-700 ">
+        <h1 class="text-3xl font-bold text-gray-700 uppercase">New Movie</h1>
+    </div>
 
-@section('content')
-    <form method="POST" action="/movies">
-
+    <form action="/movies" method="POST" class="my-16">
         @csrf
 
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-danger">
-                    <h4 class="card-title">Adicionar filme</h4>
-                    <p class="card-category">Preencha todos os campos</p>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Título do filme</label>
-                                    <input type="text" name="title" class="form-control" required value="{{ old('title') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Ano</label>
-                                    <input type="text" name="year" class="form-control" required value="{{ old('ano') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Capa do filme</label>
-                                    <input type="text" name="cover" class="form-control" required value="{{ old('cover') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Descrição</label>
-                                    <div class="form-group bmd-form-group">
-                                        <textarea class="form-control" name="description" rows="5" required value="{{ old('description') }}"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-danger pull-right">Salvar</button>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-            </div>
+        <div class="flex flex-col mt-8">
+            <label for="title" class="text-sm font-semibold tracking-wide text-gray-500">Title</label>
+            <input type="text" name="title" class="text-black px-4 py-2 mt-3 rounded-sm {{ $errors->has('title') ? 'border-red-400' : '' }}" value="{{ old('title')}}">
+
+            @if($errors->has('title'))
+                <p class="text-red-400 mt-2">{{ $errors->first('title') }}</p>
+            @endif
         </div>
 
-    </form>
+        <div class="flex flex-col mt-8">
+            <label for="year" class="text-sm font-semibold tracking-wide text-gray-500">Year</label>
+            <input type="text" name="year" class="text-black px-4 py-2 mt-3 rounded-sm {{ $errors->has('year') ? 'border-red-400' : '' }}" value="{{ old('year') }}">
 
-    @if($errors->any())
-    <div class="alert alert-warning">
-        Erros:
-        @foreach($errors->all() as $error)
-            {{ $error }}
-            @endforeach
-    </div>
-    @endif
+            @if($errors->has('year'))
+                <p class="text-red-400 mt-2">{{ $errors->first('year') }}</p>
+            @endif
+        </div>
+
+        <div class="flex flex-col mt-8">
+            <label for="description" class="text-sm font-semibold tracking-wide text-gray-500">Description</label>
+            <textarea name="description" cols="30" rows="10" class="text-black px-4 py-2 mt-3 rounded-sm {{ $errors->has('title') ? 'border-red-400' : '' }}">{{ old('description') }}</textarea>
+
+            @if($errors->has('description'))
+                <p class="text-red-400 mt-2">{{ $errors->first('description') }}</p>
+            @endif
+        </div>
+
+        <div class="flex flex-col mt-8">
+            <label for="description" class="text-sm font-semibold tracking-wide text-gray-500">Thumbnail</label>
+            <input type="text" name="thumbnail" class="text-black px-4 py-2 mt-3 rounded-sm">
+        </div>
+
+        <div class="flex flex-col mt-8">
+            <label for="description" class="text-sm font-semibold tracking-wide text-gray-500">Poster</label>
+            <input type="text" name="poster" class="text-black px-4 py-2 mt-3 rounded-sm">
+        </div>
+
+        <div class="flex flex-col mt-8">
+            <label for="description" class="text-sm font-semibold tracking-wide text-gray-500">Director</label>
+            <input type="text" name="director" class="text-black px-4 py-2 mt-3 rounded-sm">
+        </div>
+
+        <div class=" mt-8">
+            <button type="submit" class="border-2 py-2 px-4 rounded border-blue-300 text-blue-300">Create Movie</button>
+        </div>
+    </form>
+</div>
 @endsection

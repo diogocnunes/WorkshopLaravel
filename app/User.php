@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'username', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -37,8 +36,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFullNameAttribute() {
-        return $this->name . ' ' . $this->surname;
+    public function playlist()
+    {
+        return $this->belongsToMany(Movie::class, 'playlist')
+            ->as('playlist')->withPivot('watched')->withTimestamps();
     }
 
+    public function avatar()
+    {
+        return collect(explode(' ', $this->name))->map(static function ($word) {
+            return substr($word, 0, 1);
+        })->implode('');
+    }
 }

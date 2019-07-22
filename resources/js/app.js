@@ -8,6 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.Event = new Vue();
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,7 +21,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('side-menu', require('./components/SideMenu.vue').default);
+Vue.component('menu-button', require('./components/MenuButton.vue').default);
+Vue.component('star-rating', require('./components/StarRating.vue').default);
+Vue.component('modal-button', require('./components/ModalButton.vue').default);
+Vue.component('login-modal', require('./components/LoginModal.vue').default);
+Vue.component('register-modal', require('./components/RegisterModal.vue').default);
+Vue.component('inline-svg', require('./components/InlineSvg.js').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

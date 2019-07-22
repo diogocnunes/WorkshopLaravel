@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNameSurnameToUsersTable extends Migration
+class AddCreatedByToMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddNameSurnameToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->nullable();
-            $table->string('surname')->nullable();
+        Schema::table('movies', function (Blueprint $table) {
+            $table->bigInteger('created_by')->nullable();
         });
     }
 
@@ -26,9 +25,8 @@ class AddNameSurnameToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('name');
-            $table->dropColumn('surname');
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropColumn('created_by');
         });
     }
 }
