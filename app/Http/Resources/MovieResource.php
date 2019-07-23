@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\Resource;
 
-class MovieResource extends ResourceCollection
+class MovieResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -14,23 +14,13 @@ class MovieResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        $this->collection->each(function ($row) use (&$results) {
-            $newRow = [
-                'id' => $row->id,
-                'title' => $row->title,
-                'description' => $row->description,
-                'year' => $row->year,
-                'cover' => $row->cover,
-                'genre' => $row->genre->name,
-            ];
-            $results[] = $newRow;
-        });
-
         return [
-            'data' => $results,
-            'meta' => [
-                'total' => count($this->collection)
-            ]
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'year' => $this->year,
+            'cover' => $this->cover,
+            'genre' => $this->genre->name,
         ];
     }
 }

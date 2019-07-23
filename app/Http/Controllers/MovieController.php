@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Genre;
 use App\Movie;
 use Illuminate\Http\Request;
+use App\Http\Resources\MovieResource;
+
 
 class MovieController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'showApi']);
     }
 
     /**
@@ -119,5 +121,10 @@ class MovieController extends Controller
         $movie->delete();
 
         return redirect('/movies');
+    }
+
+    public function showApi(Request $request, Movie $movie)
+    {
+        return new MovieResource($movie);
     }
 }
