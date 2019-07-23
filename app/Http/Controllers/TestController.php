@@ -16,8 +16,8 @@ class TestController extends Controller
     {
         $movies = Movie::all();
 
-        $movies->each->addYear();
-        //$movies->each->removeYear();
+        //$movies->each->addYear();
+        $movies->each->removeYear();
 
         return $movies->pluck('year', 'title');
     }

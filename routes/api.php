@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Resources\MovieResource;
+use App\Http\Resources\MovieListResource;
 use App\Movie;
 use Illuminate\Http\Request;
 
@@ -20,5 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/movies', function () {
-    return new MovieResource(Movie::all());
+    return new MovieListResource(Movie::all());
 });
+
+Route::get('/movies/{movie}','MovieController@showApi');
