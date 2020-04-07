@@ -24,6 +24,6 @@ Route::get('/test', 'TestController@index');
 
 Auth::routes();
 
-View::share(
-    'menu', App\Genre::all()->sortBy('name')
-);
+//View::share(
+//    'menu', App\Genre::all()->sortBy('name')
+//);
