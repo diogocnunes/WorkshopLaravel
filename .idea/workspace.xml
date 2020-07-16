@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19d98e5c-2b28-48fe-94cf-e89def73b275" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/academy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/academy.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
-    </list>
+    <list default="true" id="19d98e5c-2b28-48fe-94cf-e89def73b275" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -260,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563893930741</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Aula 15 - Teste Resources">
+      <created>1586276548142</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586276548142</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +292,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Aula 15 - Teste Resources" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="605" y="114" key="CommitChangelistDialog2" timestamp="1586276547781">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="605" y="114" key="CommitChangelistDialog2/-1440.23.1440.877/0.23.1920.977@0.23.1920.977" timestamp="1586276547781" />
     <state width="1878" height="263" key="GridCell.Tab.0.bottom" timestamp="1586161345497">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
@@ -309,6 +312,10 @@
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1878" height="263" key="GridCell.Tab.0.right/-1440.23.1440.877/0.23.1920.977@0.23.1920.977" timestamp="1586161345496" />
+    <state x="560" y="251" key="Vcs.Push.Dialog.v2" timestamp="1586276549803">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="560" y="251" key="Vcs.Push.Dialog.v2/-1440.23.1440.877/0.23.1920.977@0.23.1920.977" timestamp="1586276549803" />
     <state x="640" y="268" width="639" height="486" key="find.popup" timestamp="1586161259038">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
